@@ -17,7 +17,7 @@ jobs:
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag exampleuser/myapp:latest
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/myapp:latest
 
     - name: Push the Docker image
-      run: docker push arjun479/myapp:latest
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/myapp:latest
